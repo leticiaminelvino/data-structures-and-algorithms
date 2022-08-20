@@ -55,7 +55,6 @@ void insertion_sort_BB_decrescente(int *vtr, int tam, int *compara, int *movimen
     }
 }
 
-
 int main(){
     time_t t;
 
@@ -65,7 +64,6 @@ int main(){
 
     int compara = 0,
         movimenta = 0;
-
 
     //crescente
     copy_array(arr, arrcopy, size);
@@ -80,7 +78,6 @@ int main(){
     printf("%d comparações\n", compara);
     printf("%d movimentações\n", movimenta);
     printf("%d clicks (%f seconds)\n",t, ((float)t)/CLOCKS_PER_SEC);
-
 
     //decrescente
     compara = 0,
