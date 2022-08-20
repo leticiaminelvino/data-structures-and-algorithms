@@ -5,13 +5,10 @@
 
 #define MAX 10000
 
-
 void insertionSort(int arr[], int size, int *compara, int *movimenta);
 void quickSort(int arr[], int low, int high, int *compara, int *movimenta);
 int partition(int array[], int low, int high, int *compara, int *movimenta);
-
 void sorting(int array[], int size);
-
 
 void insertionSort(int arr[], int size, int *compara, int *movimenta){
     int i, j, aux;
@@ -29,7 +26,6 @@ void insertionSort(int arr[], int size, int *compara, int *movimenta){
     }
 }
 
-
 void quickSort(int arr[], int low, int high, int *compara, int *movimenta){
 
     if (low < high) {
@@ -45,7 +41,6 @@ void quickSort(int arr[], int low, int high, int *compara, int *movimenta){
       quickSort(arr, pi + 1, high, compara, movimenta);
     }
 }
-
 
 int partition(int array[], int low, int high, int *compara, int *movimenta) {
   // select the rightmost element as pivot
@@ -71,7 +66,6 @@ int partition(int array[], int low, int high, int *compara, int *movimenta) {
   // return the partition point
   return (i + 1);
 }
-
 
 
 int main(){
@@ -101,7 +95,6 @@ int main(){
 
     return 0;
 }
-
 
 void sorting(int array[], int size){
     static int arrcopy[MAX];
