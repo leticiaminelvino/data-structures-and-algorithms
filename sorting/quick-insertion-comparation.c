@@ -5,10 +5,12 @@
 
 #define MAX 10000
 
-void testSort(int array[], int size);
+
 void insertionSort(int arr[], int size, int *compara, int *movimenta);
 void quickSort(int arr[], int low, int high, int *compara, int *movimenta);
 int partition(int array[], int low, int high, int *compara, int *movimenta);
+
+void sorting(int array[], int size);
 
 
 void insertionSort(int arr[], int size, int *compara, int *movimenta){
@@ -81,45 +83,45 @@ int main(){
         arr_ascd[i] = i + 1;
         arr_dscd[i] = MAX - i;
         arr_rand[i] = rand();
-    }    
+    }
 
     length =  sizeof(sizes)/sizeof(sizes[0]);
     for(int i = 0; i < length; i++) {
-        printf("TAMANHO %d:\n", sizes[i]);
+        printf("\nTAMANHO %d:\n", sizes[i]);
 
         printf("\tascendente:\n");
-        testSort(arr_ascd, sizes[i]);
+        sorting(arr_ascd, sizes[i]);
 
         printf("\tdescendente:\n");
-        testSort(arr_dscd, sizes[i]);
+        sorting(arr_dscd, sizes[i]);
 
         printf("\taleatorio:\n");
-        testSort(arr_rand, sizes[i]);
+        sorting(arr_rand, sizes[i]);
     }
 
     return 0;
 }
 
 
-void testSort(int array[], int size){
-    static int tosort[MAX];
+void sorting(int array[], int size){
+    static int arrcopy[MAX];
     int compara = 0, movimenta = 0;
     int low = 0,  high = size - 1; 
     time_t t;
 
     //quick sort
-    copy_array(array, tosort, size);
+    copy_array(array, arrcopy, size);
     t = clock();
-    quickSort(tosort, low, high, &compara, &movimenta);
+    quickSort(arrcopy, low, high, &compara, &movimenta);
     t = clock() - t;
-    printf("\t\tQUICK SORT: comparações: %d, movimentações: %d, tempo: %ld clocks (%f seconds)\n", compara, movimenta, t, ((float)t)/CLOCKS_PER_SEC );
+    printf("\t\tQUICK SORT: comparações: %d, movimentações: %d, tempo: %ld clicks (%f seconds)\n", compara, movimenta, t, ((float)t)/CLOCKS_PER_SEC );
 
     //insertion sort
-    copy_array(array, tosort, size);
+    copy_array(array, arrcopy, size);
     compara = 0;
     movimenta = 0;
     t = clock();
-    insertionSort(tosort, size, &compara, &movimenta);
+    insertionSort(arrcopy, size, &compara, &movimenta);
     t = clock() - t;
-    printf("\t\tINSERTION SORT: comparações: %d, movimentações: %d, tempo: %ld clocks (%f seconds)\n", compara, movimenta, t, ((float)t)/CLOCKS_PER_SEC );
+    printf("\t\tINSERTION SORT: comparações: %d, movimentações: %d, tempo: %ld clicks (%f seconds)\n", compara, movimenta, t, ((float)t)/CLOCKS_PER_SEC );
 }
