@@ -80,7 +80,7 @@ int main(){
         r = size - 1;
 
 
-    copyArray(arr, arrcopy, size);
+    copy_array(arr, arrcopy, size);
 
     t = clock();
     mergeSort(arrcopy, l, r, &compara, &movimenta);
@@ -88,8 +88,8 @@ int main(){
 
     printf("merge sort:\n");
 
-    printArray(arr, size);
-    printArray(arrcopy, size);
+    print_array(arr, size);
+    print_array(arrcopy, size);
     printf("%d comparações\n", compara);
     printf("%d movimentações\n", movimenta);
     printf("%d clicks (%f seconds)\n",t, ((float)t)/CLOCKS_PER_SEC);
