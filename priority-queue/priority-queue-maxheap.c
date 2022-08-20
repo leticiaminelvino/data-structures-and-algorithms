@@ -4,7 +4,6 @@
 #define FILHO_ESQ(i) (2*i+1)
 #define FILHO_DIR(i) (2*i+2)
 
-//a
 typedef struct {
     /*char nome[30];*/
     int nome; /*mudar de volta para char qnd descobrir pq o scanf nao ta funcionando*/
