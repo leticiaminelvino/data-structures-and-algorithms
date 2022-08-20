@@ -3,7 +3,9 @@
 #include <time.h>
 #include "acessory-functions.h"
 
+#define MAX 10000
 
+void testSort(int array[], int size);
 void insertionSort(int arr[], int size, int *compara, int *movimenta);
 void quickSort(int arr[], int low, int high, int *compara, int *movimenta);
 int partition(int array[], int low, int high, int *compara, int *movimenta);
@@ -71,225 +73,53 @@ int partition(int array[], int low, int high, int *compara, int *movimenta) {
 
 
 int main(){
-    time_t t;
+    int arr_ascd[MAX], arr_dscd[MAX], arr_rand[MAX];
+    int sizes[] = {100, 1000, MAX}; 
+    int length; 
 
-    int arr1_ascd[100], arr1_dscd[100], arr1_rand[100],
-        arr2_ascd[1000], arr2_dscd[1000], arr2_rand[1000],
-        arr3_ascd[10000], arr3_dscd[10000], arr3_rand[10000];
-
-    int size;
-
-    int compara,
-        movimenta;
-
-    int low,
-        high;
-
-    //preenchendo arrays
-    for (int i = 0; i <100; i++){
-        arr1_ascd[i]=i+1;
-        arr1_dscd[i]=100-i;
-        arr1_rand[i]= rand() % 100;
-    }
-    for (int i = 0; i <1000; i++){
-        arr2_ascd[i]=i+1;
-        arr2_dscd[i]=1000-i;
-        arr2_rand[i]= rand() % 1000;
-    }
-    for (int i = 0; i <10000; i++){
-        arr3_ascd[i]=i+1;
-        arr3_dscd[i]=10000-i;
-        arr3_rand[i]= rand() % 10000;
+    for (int i = 0; i < MAX; i++){
+        arr_ascd[i] = i + 1;
+        arr_dscd[i] = MAX - i;
+        arr_rand[i] = rand();
     }    
 
+    length =  sizeof(sizes)/sizeof(sizes[0]);
+    for(int i = 0; i < length; i++) {
+        printf("TAMANHO %d:\n", sizes[i]);
 
-    //vetor tamanho 100
-    printf("TAMANHO 100:\n");
-    size = 100;
-    int *arr_copy = malloc(sizeof(int) * size);
+        printf("\tascendente:\n");
+        testSort(arr_ascd, sizes[i]);
 
-    low = 0;
-    high = size - 1;
+        printf("\tdescendente:\n");
+        testSort(arr_dscd, sizes[i]);
 
-    //vetor ascendente tamanho 100 
-    printf("  ascendente:\n");
-        //quick sort
-    compara = 0;
-    movimenta = 0;
-    copy_array(arr1_ascd, arr_copy, size);
-    t = clock();
-    quickSort(arr_copy, low, high, &compara, &movimenta);
-    t = clock() - t;
-    printf("    QUICK SORT: comparações: %d, movimentações: %d, tempo: %d clicks (%f seconds)\n", compara, movimenta, t, ((float)t)/CLOCKS_PER_SEC );
-        //insertion sort
-    compara = 0;
-    movimenta = 0;
-    t = clock();
-    insertionSort(arr1_ascd, size, &compara, &movimenta);
-    t = clock() - t;
-    printf("    INSERTION SORT: comparações: %d, movimentações: %d, tempo: %d clicks (%f seconds)\n", compara, movimenta, t, ((float)t)/CLOCKS_PER_SEC );
+        printf("\taleatorio:\n");
+        testSort(arr_rand, sizes[i]);
+    }
 
-    //vetor descendente tamanho 100
-    printf("  descendente:\n");
-        //quick sort
-    compara = 0;
-    movimenta = 0;
-    copy_array(arr1_dscd, arr_copy, size);
-    t = clock();
-    quickSort(arr_copy, low, high, &compara, &movimenta);
-    t = clock() - t;
-    printf("    QUICK SORT: comparações: %d, movimentações: %d, tempo: %d clicks (%f seconds)\n", compara, movimenta, t, ((float)t)/CLOCKS_PER_SEC );
-        //insertion sort
-    compara = 0;
-    movimenta = 0;
-    t = clock();
-    insertionSort(arr1_dscd, size, &compara, &movimenta);
-    t = clock() - t;
-    printf("    INSERTION SORT: comparações: %d, movimentações: %d, tempo: %d clicks (%f seconds)\n", compara, movimenta, t, ((float)t)/CLOCKS_PER_SEC );
-
-
-    //vetor aleatorio tamanho 100
-    printf("  aleatorio:\n");
-        //quick sort
-    compara = 0;
-    movimenta = 0;
-    copy_array(arr1_rand, arr_copy, size);
-    t = clock();
-    quickSort(arr_copy, low, high, &compara, &movimenta);
-    t = clock() - t;
-    printf("    QUICK SORT: comparações: %d, movimentações: %d, tempo: %d clicks (%f seconds)\n", compara, movimenta, t, ((float)t)/CLOCKS_PER_SEC );
-        //insertion sort
-    compara = 0;
-    movimenta = 0;
-    t = clock();
-    insertionSort(arr1_rand, size, &compara, &movimenta);
-    t = clock() - t;
-    printf("    INSERTION SORT: comparações: %d, movimentações: %d, tempo: %d clicks (%f seconds)\n", compara, movimenta, t, ((float)t)/CLOCKS_PER_SEC );
-
-
-    //vetor tamanho 1000
-    printf("\nTAMANHO 1000:\n");
-    size = 1000;
-    arr_copy = realloc(arr_copy, size * sizeof(int));
-
-    low = 0;
-    high = size - 1;
-
-    //vetor ascendente tamanho 1000
-    printf("  ascendente:\n");
-        //quick sort
-    compara = 0;
-    movimenta = 0;
-    copy_array(arr2_ascd, arr_copy, size);
-    t = clock();
-    quickSort(arr_copy, low, high, &compara, &movimenta);
-    t = clock() - t;
-    printf("    QUICK SORT: comparações: %d, movimentações: %d, tempo: %d clicks (%f seconds)\n", compara, movimenta, t, ((float)t)/CLOCKS_PER_SEC );
-        //insertion sort
-    compara = 0;
-    movimenta = 0;
-    t = clock();
-    insertionSort(arr2_ascd, size, &compara, &movimenta);
-    t = clock() - t;
-    printf("    INSERTION SORT: comparações: %d, movimentações: %d, tempo: %d clicks (%f seconds)\n", compara, movimenta, t, ((float)t)/CLOCKS_PER_SEC );
-
-    //vetor descendente tamanho 1000
-    printf("  descendente:\n");
-    compara = 0;
-    movimenta = 0;
-    copy_array(arr2_dscd, arr_copy, size);
-    t = clock();
-    quickSort(arr_copy, low, high, &compara, &movimenta);
-    t = clock() - t;
-    printf("    QUICK SORT: comparações: %d, movimentações: %d, tempo: %d clicks (%f seconds)\n", compara, movimenta, t, ((float)t)/CLOCKS_PER_SEC );
-        //insertion sort
-    compara = 0;
-    movimenta = 0;
-    t = clock();
-    insertionSort(arr2_dscd, size, &compara, &movimenta);
-    t = clock() - t;
-    printf("    INSERTION SORT: comparações: %d, movimentações: %d, tempo: %d clicks (%f seconds)\n", compara, movimenta, t, ((float)t)/CLOCKS_PER_SEC );
-
-    //vetor aleatorio tamanho 1000
-    printf("  aleatorio:\n");
-    compara = 0;
-    movimenta = 0;
-    copy_array(arr2_rand, arr_copy, size);
-    t = clock();
-    quickSort(arr_copy, low, high, &compara, &movimenta);
-    t = clock() - t;
-    printf("    QUICK SORT: comparações: %d, movimentações: %d, tempo: %d clicks (%f seconds)\n", compara, movimenta, t, ((float)t)/CLOCKS_PER_SEC );
-        //insertion sort
-    compara = 0;
-    movimenta = 0;
-    t = clock();
-    insertionSort(arr2_rand, size, &compara, &movimenta);
-    t = clock() - t;
-    printf("    INSERTION SORT: comparações: %d, movimentações: %d, tempo: %d clicks (%f seconds)\n", compara, movimenta, t, ((float)t)/CLOCKS_PER_SEC );
-
-    //vetor tamanho 10000
-    printf("\nTAMANHO 10000:\n");
-    size = 10000;
-    arr_copy = realloc(arr_copy, size * sizeof(int));
-
-    low = 0;
-    high = size - 1;
-
-    //vetor ascendente tamanho 10000
-    printf("  ascendente:\n");
-        //quick sort
-    compara = 0;
-    movimenta = 0;
-    copy_array(arr3_ascd, arr_copy, size);
-    t = clock();
-    quickSort(arr_copy, low, high, &compara, &movimenta);
-    t = clock() - t;
-    printf("    QUICK SORT: comparações: %d, movimentações: %d, tempo: %d clicks (%f seconds)\n", compara, movimenta, t, ((float)t)/CLOCKS_PER_SEC );
-        //insertion sort
-    compara = 0;
-    movimenta = 0;
-    t = clock();
-    insertionSort(arr3_ascd, size, &compara, &movimenta);
-    t = clock() - t;
-    printf("    INSERTION SORT: comparações: %d, movimentações: %d, tempo: %d clicks (%f seconds)\n", compara, movimenta, t, ((float)t)/CLOCKS_PER_SEC );
-
-    //vetor descendente tamanho 10000
-    printf("  descendente:\n");
-        //quick sort
-    compara = 0;
-    movimenta = 0;
-    copy_array(arr3_dscd, arr_copy, size);
-    t = clock();
-    quickSort(arr_copy, low, high, &compara, &movimenta);
-    t = clock() - t;
-    printf("    QUICK SORT: comparações: %d, movimentações: %d, tempo: %d clicks (%f seconds)\n", compara, movimenta, t, ((float)t)/CLOCKS_PER_SEC );
-        //insertion sort
-    compara = 0;
-    movimenta = 0;
-    t = clock();
-    insertionSort(arr3_dscd, size, &compara, &movimenta);
-    t = clock() - t;
-    printf("    INSERTION SORT: comparações: %d, movimentações: %d, tempo: %d clicks (%f seconds)\n", compara, movimenta, t, ((float)t)/CLOCKS_PER_SEC );
-
-    //vetor aleatorio tamanho 10000
-    printf("  aleatorio:\n");
-        //quick sort
-    compara = 0;
-    movimenta = 0;
-    copy_array(arr3_rand, arr_copy, size);
-    t = clock();
-    quickSort(arr_copy, low, high, &compara, &movimenta);
-    t = clock() - t;
-    printf("    QUICK SORT: comparações: %d, movimentações: %d, tempo: %d clicks (%f seconds)\n", compara, movimenta, t, ((float)t)/CLOCKS_PER_SEC );
-        //insertion sort
-    compara = 0;
-    movimenta = 0;
-    t = clock();
-    insertionSort(arr3_rand, size, &compara, &movimenta);
-    t = clock() - t;
-    printf("    INSERTION SORT: comparações: %d, movimentações: %d, tempo: %d clicks (%f seconds)\n", compara, movimenta, t, ((float)t)/CLOCKS_PER_SEC );
-
-
-    free(arr_copy);
     return 0;
+}
+
+
+void testSort(int array[], int size){
+    static int tosort[MAX];
+    int compara = 0, movimenta = 0;
+    int low = 0,  high = size - 1; 
+    time_t t;
+
+    //quick sort
+    copy_array(array, tosort, size);
+    t = clock();
+    quickSort(tosort, low, high, &compara, &movimenta);
+    t = clock() - t;
+    printf("\t\tQUICK SORT: comparações: %d, movimentações: %d, tempo: %ld clocks (%f seconds)\n", compara, movimenta, t, ((float)t)/CLOCKS_PER_SEC );
+
+    //insertion sort
+    copy_array(array, tosort, size);
+    compara = 0;
+    movimenta = 0;
+    t = clock();
+    insertionSort(tosort, size, &compara, &movimenta);
+    t = clock() - t;
+    printf("\t\tINSERTION SORT: comparações: %d, movimentações: %d, tempo: %ld clocks (%f seconds)\n", compara, movimenta, t, ((float)t)/CLOCKS_PER_SEC );
 }
