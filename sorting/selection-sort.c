@@ -2,6 +2,7 @@
 #include <time.h>
 #include "acessory-functions.h"
 
+//bug nas comparações e movimentações, estão dando resultados iguais nas duas funções.
 
 void selection_sort_crescente(int *vtr, int tam, int *compara, int *movimenta){
     int i, j, menor;
@@ -17,10 +18,8 @@ void selection_sort_crescente(int *vtr, int tam, int *compara, int *movimenta){
         swap(&vtr[menor], &vtr[i]);
         (*movimenta)++;
     }
-
-
-
 }
+
 
 void selection_sort_decrescente(int *vtr, int tam, int *compara, int *movimenta){
     int i, j, menor;
@@ -37,6 +36,7 @@ void selection_sort_decrescente(int *vtr, int tam, int *compara, int *movimenta)
         (*movimenta)++;
     }
 }
+
 
 int main(){
     time_t t;
