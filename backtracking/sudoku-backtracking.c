@@ -6,7 +6,6 @@ int sudoku(int matriz[9][9]);
 int sudokuR(int matriz[9][9], int fixo[9][9], int linha, int coluna);
 void imprime_sudoku(int matriz[9][9]);
 
-
 void imprime_sudoku(int matriz[9][9]){
     int i, j;
     for (i = 0; i < 9; i++) {
@@ -45,7 +44,6 @@ int pode_inserir(int matriz[9][9], int linha, int coluna, int valor){
     return 1;
 }
 
-
 int sudoku(int matriz[9][9]){
     int i, j, fixo[9][9];
     for(i = 0; i < 9; i++){
@@ -55,7 +53,6 @@ int sudoku(int matriz[9][9]){
     }
     return sudokuR(matriz, fixo, 0, 0);
 }
-
 
 int sudokuR(int matriz[9][9], int fixo[9][9], int linha, int coluna){
     int valor, nova_linha, nova_coluna;
@@ -79,7 +76,6 @@ int sudokuR(int matriz[9][9], int fixo[9][9], int linha, int coluna){
     return 0; 
 }
 
-
 void proxima_posicao(int linha, int coluna, int *nova_linha, int *nova_coluna){
     if(coluna < 8){
         *nova_linha = linha;
@@ -90,7 +86,6 @@ void proxima_posicao(int linha, int coluna, int *nova_linha, int *nova_coluna){
         *nova_coluna = 0;
     }
 }
-
 
 int main(){
     int grid_inicial[9][9] =   {{ 3, 0, 6, 5, 0, 8, 4, 0, 0 },
@@ -104,14 +99,12 @@ int main(){
                                 { 0, 0, 5, 2, 0, 6, 3, 0, 0 }};
 
     sudoku(grid_inicial);
-
-
+    
     return 0;
 }
 
 /*
 Output esperado
-
 3 1 6 5 7 8 4 9 2 
 5 2 9 1 3 4 7 6 8 
 4 8 7 6 2 9 5 3 1 
@@ -121,5 +114,4 @@ Output esperado
 1 3 8 9 4 7 2 5 6 
 6 9 2 3 5 1 8 7 4 
 7 4 5 2 8 6 3 1 9 
-
 */
