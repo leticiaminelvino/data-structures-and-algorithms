@@ -25,7 +25,6 @@ Grafo_ptr criar_grafo(int num_vertices){
     int i;
     Grafo_ptr grafo = malloc(sizeof(Grafo));
     grafo->num_vertices = num_vertices;
-
     //alocar a matriz
     grafo->adjacencia = malloc(num_vertices * sizeof(int *));
     for(i = 0; i < num_vertices; i++){
@@ -121,7 +120,6 @@ Grafo_ptr le_grafo(){
     }
     return grafo;
 }
-
 
 int main(){
    return 0;

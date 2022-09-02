@@ -8,7 +8,6 @@ typedef struct Node {
 } Node; 
 typedef Node * Node_ptr;
 
-
 typedef struct {
     Node_ptr *adjacencia; 
     int num_vertices; //numero de vertices no grafo
@@ -105,5 +104,6 @@ void imprime_arestas(Grafo_ptr grafo){
 
 
 int main(){
+
     return 0;
 }
