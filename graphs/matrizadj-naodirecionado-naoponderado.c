@@ -22,7 +22,7 @@ void vizinhos_dos_vizinhos(Grafo_ptr grafo, int vertice1);
 
 
 Grafo_ptr criar_grafo(int num_vertices){
-    int i, j;
+    int i;
     Grafo_ptr grafo = malloc(sizeof(Grafo));
     grafo->num_vertices = num_vertices;
 
