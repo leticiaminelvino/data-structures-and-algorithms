@@ -3,6 +3,10 @@
         "time.h": "c",
         "acessory-functions.h": "c",
         "stdio.h": "c",
-        "stdlib.h": "c"
-    }
+        "stdlib.h": "c",
+        "lista-ligada.h": "c",
+        "fila-listaligada.h": "c",
+        "pilha-listaligada.h": "c"  
+    },
+    "C_Cpp.errorSquiggles": "Enabled"
 }

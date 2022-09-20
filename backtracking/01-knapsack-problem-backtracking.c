@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 #define NUM_OBJ 4           //numero de objetos
 #define CAPACIDADE 10.0    //capacidade da mochila
@@ -18,5 +19,5 @@ typedef Lista *Lista_ptr;
 
 
 int main(){
-    
+    return 0;
 }
