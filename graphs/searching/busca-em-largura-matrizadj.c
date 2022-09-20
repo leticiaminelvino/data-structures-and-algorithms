@@ -1,7 +1,7 @@
 //busca em largura, matriz adjacencia
 
 #include <stdio.h>
-#include "fila-listaligada.c"
+#include "fila-listaligada.h"
 #include "matrizadj-naodirecionado-naoponderado.c"
 
 

@@ -28,14 +28,22 @@ Node_ptr insere_na_lista(Node_ptr lista, int v){
 
 Node_ptr remove_da_lista(Node_ptr lista, int v){
     Node_ptr proximo;
-    if(lista == NULL)
-        return NULL;
-    else if (lista->dado = v){
-        proximo = lista->prox;
-        free(lista);
-        return proximo;
-    } else {
-        lista->prox = remove_da_lista(lista->prox, v);
-        return lista;
+    if(lista == NULL){
+        return NULL; 
+    } else { 
+        if (lista->dado == v){
+            proximo = lista->prox;
+            free(lista);
+            return proximo;
+        } else {
+            lista->prox = remove_da_lista(lista->prox, v);
+            return lista;
+        }
     }
+}
+
+void imprime_lista(Node_ptr lista){
+    Node_ptr atual;
+    for(atual = lista; atual!= NULL; atual = atual->prox)
+        printf("%d\n", atual->dado);
 }

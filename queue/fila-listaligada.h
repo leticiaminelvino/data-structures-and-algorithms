@@ -41,3 +41,7 @@ int desenfileira(Fila_ptr fila){
     free(primeiro);
     return x;
 }
+
+int fila_vazia(Fila_ptr fila){
+    return fila->inicio == NULL;
+}

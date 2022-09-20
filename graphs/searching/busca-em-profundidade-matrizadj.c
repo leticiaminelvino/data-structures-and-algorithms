@@ -1,7 +1,5 @@
 //busca em profundidade, matriz adjacencia
-
-#include <stdio.h>
-#include "pilha-listaligada.c"
+#include "pilha-listaligada.h"
 #include "matrizadj-naodirecionado-naoponderado.c"
 
 
